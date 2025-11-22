@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-worker
+  template:
+    metadata:
+      labels:
+        app: ai-worker
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/ai-worker: ""
+
+      containers:
+      - name: ai-worker
+        image: YOUR_DOCKER_ID/sqs-worker:v1 
+        imagePullPolicy: Always
+        
+        env:
+        - name: SQS_QUEUE_URL
+          value: "SQS URL 입력" 
+
+        envFrom:
+        - secretRef:
+            name: aws-sqs-secret # 작업을 수행할 bot 이름
