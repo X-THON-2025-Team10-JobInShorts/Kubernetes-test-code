@@ -120,3 +120,5 @@ S3 버킷에 파일을 업로드하면, 잠시 후 터미널에 메시지 수신
 ├── main.go                 # SQS 메시지 처리 로직을 담은 메인 애플리케이션
 └── README.md               # 프로젝트 설명 파일
 ```
+
+<img width="890" height="111" alt="스크린샷 2025-11-22 오후 3 27 25" src="https://github.com/user-attachments/assets/22017768-a298-40e8-ac56-8f25a7c997fd" />
