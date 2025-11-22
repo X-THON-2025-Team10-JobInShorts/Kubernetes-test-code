@@ -30,7 +30,7 @@ type S3EventWrapper struct {
 }
 
 func main() {
-	// 1. AWS 설정 로드 (환경변수 AWS_ACCESS_KEY_ID 등 자동 인식)
+	// 1. AWS 설정 로드 
 	cfg, err := config.LoadDefaultConfig(context.TODO())
 	if err != nil {
 		log.Fatalf("AWS 설정 로드 실패: %v", err)
@@ -54,7 +54,7 @@ func main() {
 		resp, err := sqsClient.ReceiveMessage(context.TODO(), &sqs.ReceiveMessageInput{
 			QueueUrl:            aws.String(queueURL),
 			MaxNumberOfMessages: 1,
-			WaitTimeSeconds:     20, // 20초 동안 대기 (롱 폴링)
+			WaitTimeSeconds:     20, 
 		})
 
 		if err != nil {
@@ -118,9 +118,7 @@ func processMessage(ctx context.Context, downloader *manager.Downloader, sqsClie
 
 	log.Printf("✅ 다운로드 완료: /tmp/%s", key)
 
-	// (여기서 AI 처리 로직이 들어갑니다)
 
-	// 6. 처리 완료 후 SQS 메시지 삭제 (필수!)
 	deleteMessage(ctx, sqsClient, queueURL, msg)
 }
 
