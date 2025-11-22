@@ -1,0 +1,29 @@
+# Binaries for programs
+*.exe
+*.dll
+*.so
+
+# Test binaries
+*.test
+*.out
+
+# Dependency directories (from `go get`)
+vendor/
+
+# IDE/Editor specific files
+.idea/
+.vscode/
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+NS_STORE
+
+# Environment variables / Credentials
+.env
+credentials
+config
+
+# Go build cache
+.cache/
